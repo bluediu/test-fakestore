@@ -1,17 +1,28 @@
 /* Interfaces */
 import type { IProduct } from '../interfaces';
 
+/* Components */
+import { Link } from 'react-router-dom';
+
+/* Utils */
+import { generateUrl } from '../../../utils';
+
+/* Constants */
+import { productsPath } from '../../../constants';
+
 export const ProductCard = ({ product }: { product: IProduct }) => {
   return (
     <section
       key={product.id}
       className="bg-white shadow-md rounded-2xl p-4 flex flex-col justify-between"
     >
-      <img
-        src={product.image}
-        alt={product.title}
-        className="h-48 w-full object-contain mb-4"
-      />
+      <Link to={generateUrl(productsPath.PRODUCT_DETAIL, { id: product.id })}>
+        <img
+          src={product.image}
+          alt={product.title}
+          className="h-48 w-full object-contain mb-4"
+        />
+      </Link>
 
       <div className="text-sm text-gray-500 mb-2">
         <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium">
