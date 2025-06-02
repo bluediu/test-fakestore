@@ -1,7 +1,9 @@
+import { Navigation } from './routes';
+
 function App() {
   return (
     <>
-      <h1>Hola</h1>
+      <Navigation />
     </>
   );
 }
