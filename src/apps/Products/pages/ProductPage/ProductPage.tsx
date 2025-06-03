@@ -3,12 +3,15 @@ import { useEffect, useState } from 'react';
 /* Libs */
 import axios from 'axios';
 
-/* Interfaces */
-import type { IProduct } from '../../interfaces';
+/*  Layouts */
+import { ProductLayout } from '../../layouts';
 
 /* Components */
 import { ProductCard } from '../../components';
 import { Spinner } from '../../../UI/components';
+
+/* Interfaces */
+import type { IProduct } from '../../interfaces';
 
 export const ProductPage = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
@@ -29,14 +32,12 @@ export const ProductPage = () => {
   if (isLoading) return <Spinner />;
 
   return (
-    <main className="p-6">
-      <h1 className="text-2xl font-semibold mb-6">Products</h1>
-
+    <ProductLayout>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
-    </main>
+    </ProductLayout>
   );
 };

@@ -4,18 +4,17 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 /* Hooks */
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 /* Components */
-import { Spinner } from '../../../UI/components';
 import { ProductDetail } from '../../components';
+import { GoBackButton, Spinner } from '../../../UI/components';
 
-import type { IProduct } from '../../interfaces';
 /* Interfaces */
+import type { IProduct } from '../../interfaces';
 
 export const ProductDetailPage = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
 
   const [product, setProduct] = useState<IProduct | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -37,12 +36,7 @@ export const ProductDetailPage = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-4">
-      <button
-        onClick={() => navigate(-1)}
-        className="mb-4 px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition"
-      >
-        ⬅ Volver
-      </button>
+      <GoBackButton />
 
       <ProductDetail product={product!} />
     </div>
