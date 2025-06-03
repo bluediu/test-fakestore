@@ -1,7 +1,11 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 /* Pages */
-import { ProductDetailPage, ProductPage } from '../apps/Products';
+import {
+  ProductDetailPage,
+  ProductPage,
+  FavoritesPage,
+} from '../apps/Products';
 
 /* Constants */
 import { productsPath } from '../constants';
@@ -14,6 +18,10 @@ export const Navigation = () => {
         <Route
           path={productsPath.PRODUCT_DETAIL}
           element={<ProductDetailPage />}
+        />
+        <Route
+          path={productsPath.PRODUCT_FAVORITES}
+          element={<FavoritesPage />}
         />
         <Route path="/*" element={<Navigate to="/" />} />
       </Routes>
